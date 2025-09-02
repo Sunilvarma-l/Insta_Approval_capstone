@@ -1,0 +1,158 @@
+/* ===== Container ===== */
+.loan-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: auto;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.2s ease-in-out;
+  text-align: center;
+}
+
+/* Heading */
+.loan-container h2 {
+  color: #1565c0;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+  animation: slideDown 1s ease-in-out;
+}
+
+/* Apply Loan Button */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  margin-bottom: 25px;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(21, 101, 192, 0.5);
+}
+
+/* Table Wrapper */
+.table-wrapper {
+  overflow-x: auto;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+/* Styled Table */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.styled-table thead tr {
+  background: #1565c0;
+  color: #fff;
+  text-align: left;
+}
+
+.styled-table th, 
+.styled-table td {
+  padding: 14px 16px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background 0.3s;
+}
+
+.styled-table tbody tr:hover {
+  background: #f1f8ff;
+  transform: scale(1.01);
+}
+
+/* Status Badges */
+.status {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.status.approved { background: #c8e6c9; color: #2e7d32; }
+.status.pending { background: #fff9c4; color: #f57f17; }
+.status.rejected { background: #ffcdd2; color: #c62828; }
+
+/* Buttons inside table */
+.btn-update, .btn-withdraw {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.3s ease;
+}
+
+.btn-update {
+  background: #42a5f5;
+  color: #fff;
+}
+
+.btn-update:hover {
+  background: #1565c0;
+}
+
+.btn-withdraw {
+  background: #ef5350;
+  color: #fff;
+}
+
+.btn-withdraw:hover {
+  background: #c62828;
+}
+
+/* Loading + Empty State */
+.loading, .empty {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-25px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .loan-container {
+    padding: 25px;
+  }
+
+  .styled-table th, 
+  .styled-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-update, .btn-withdraw {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}

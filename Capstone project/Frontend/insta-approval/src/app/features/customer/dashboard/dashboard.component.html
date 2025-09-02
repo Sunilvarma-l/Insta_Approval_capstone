@@ -1,0 +1,43 @@
+<div class="loan-container">
+  <h2>💰 Your Loan Applications</h2>
+  <a routerLink="/loan-apply" class="btn-primary">+ Apply for New Loan</a>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">Loading loans...</div>
+
+  <!-- Loan Applications Table -->
+  <div *ngIf="!loading && loanApplications.length > 0" class="table-wrapper">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Loan Amount</th>
+          <th>Status</th>
+          <th>Remarks</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loanApplications" class="fade-row">
+          <td>{{ loan.applicationId }}</td>
+          <td>₹{{ loan.loanAmount | number }}</td>
+          <td>
+            <span class="status" [ngClass]="loan.status.toLowerCase()">
+              {{ loan.status }}
+            </span>
+          </td>
+          <td>{{ loan.remarks || '-' }}</td>
+          <td>
+            <button class="btn-update" (click)="onUpdateLoan(loan)">Update</button>
+            <button class="btn-withdraw" (click)="onWithdrawLoan(loan.applicationId)">Withdraw</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading && loanApplications.length === 0" class="empty">
+    🚫 You have no loan applications.
+  </div>
+</div>

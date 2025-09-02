@@ -1,0 +1,29 @@
+<div class="login-container">
+  <h2 class="fade-in-down">🔑 Welcome Back</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate class="fade-in">
+
+    <!-- Email -->
+    <div class="input-group slide-in-left">
+      <input id="email" name="email" formControlName="email" type="email" required autocomplete="email" />
+      <label for="email">Email Address</label>
+      <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+        Please enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="input-group slide-in-right">
+      <input id="password" name="password" formControlName="password" type="password" required autocomplete="current-password" />
+      <label for="password">Password</label>
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+        Password is required.
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="loginForm.invalid || loading" class="pulse">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+  </form>
+</div>

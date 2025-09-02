@@ -1,0 +1,58 @@
+<div class="admin-dashboard-container">
+  <h2>📊 Admin Dashboard - Pending Loan Applications</h2>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading-spinner">⏳ Loading pending loans...</div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="error-message animate__animated animate__shakeX">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Loan Applications Table -->
+  <div class="table-container" *ngIf="!loading && pendingLoans.length > 0">
+    <table class="animated-table">
+      <thead>
+        <tr>
+          <th>Application ID</th>
+          <th>Customer ID</th>
+          <th>Loan Amount</th>
+          <th>Application Date</th>
+          <th>Status</th>
+          <th>Remarks</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of pendingLoans" class="animate__animated animate__fadeInUp">
+          <td>{{ loan.applicationId }}</td>
+          <td>{{ loan.customerId }}</td>
+          <td>₹ {{ loan.loanAmount }}</td>
+          <td>{{ loan.applicationDate | date }}</td>
+          <td>
+            <span [ngClass]="{
+              'status-pending': loan.status === 'PENDING',
+              'status-approved': loan.status === 'APPROVED',
+              'status-rejected': loan.status === 'REJECTED'
+            }">
+              {{ loan.status }}
+            </span>
+          </td>
+          <td>
+            <input [(ngModel)]="loan.adminRemarks" placeholder="Enter remarks" class="remarks-input" />
+          </td>
+          <td>
+            <button class="btn-approve" (click)="approveLoan(loan)">✅ Approve</button>
+            <button class="btn-reject" (click)="rejectLoan(loan)">❌ Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Loans Found -->
+  <div *ngIf="!loading && pendingLoans.length === 0" 
+       class="no-data animate__animated animate__fadeIn">
+    🎉 No pending loans found.
+  </div>
+</div>

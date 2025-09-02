@@ -1,0 +1,16 @@
+<div class="loan-card">
+  <h3>Loan Application ID: {{ loan.applicationId }}</h3>
+  <p>Customer ID: {{ loan.customerId }}</p>
+  <p>Loan Amount: {{ loan.loanAmount }}</p>
+  <p>Status: {{ loan.status }}</p>
+  <p>Applied on: {{ loan.applicationDate }}</p>
+  <p>Remarks: {{ loan.remarks || '-' }}</p>
+
+  <label>
+    Admin Remarks:
+    <textarea [(ngModel)]="remarks" placeholder="Enter remarks here"></textarea>
+  </label>
+
+  <button [disabled]="loadingApprove" (click)="approveLoan()">Approve</button>
+  <button [disabled]="loadingReject" (click)="rejectLoan()">Reject</button>
+</div>

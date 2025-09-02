@@ -1,0 +1,45 @@
+<div class="admin-login-container">
+  <div class="admin-login-card zoom-in">
+    <h2 class="login-title">🛡️ Admin Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+
+      <!-- Email -->
+      <div class="field slide-in-left">
+        <input 
+          formControlName="email" 
+          type="email" 
+          placeholder=" " 
+          autocomplete="off" 
+          required />
+        <label>Admin Email</label>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+          Enter a valid email.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="field slide-in-right">
+        <input 
+          formControlName="password" 
+          type="password" 
+          placeholder=" " 
+          autocomplete="new-password" 
+          required />
+        <label>Password</label>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
+          Password is required.
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" [disabled]="loginForm.invalid || loading" class="glow-btn">
+        {{ loading ? '🔐 Logging in...' : 'Login as Admin' }}
+      </button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error fade-in">{{ errorMessage }}</div>
+
+
+  </div>
+</div>

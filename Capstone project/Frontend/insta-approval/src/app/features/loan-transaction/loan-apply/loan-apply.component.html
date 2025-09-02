@@ -1,0 +1,57 @@
+<div class="loan-form-container">
+  <h2 class="form-title">Apply for a New Loan</h2>
+
+  <form [formGroup]="loanForm" (ngSubmit)="onSubmit()" novalidate class="styled-form">
+    
+    <!-- Customer ID -->
+    <div class="form-group">
+      <label for="customerId">Customer ID:</label>
+      <input
+        id="customerId"
+        formControlName="customerId"
+        type="number"
+        [disabled]="true"
+        class="input-field"
+      />
+    </div>
+
+    <!-- Loan Amount -->
+    <div class="form-group">
+      <label for="loanAmount">Loan Amount:</label>
+      <input
+        id="loanAmount"
+        formControlName="loanAmount"
+        type="number"
+        class="input-field"
+      />
+      <div *ngIf="loanForm.get('loanAmount')?.invalid && loanForm.get('loanAmount')?.touched" class="error-message">
+        Please enter a valid loan amount greater than zero.
+      </div>
+    </div>
+
+    <!-- Documents -->
+    <div formArrayName="documents" class="form-group">
+      <label>Documents (optional):</label>
+      <div *ngFor="let doc of documents.controls; let i = index" [formGroupName]="i" class="document-group animate-fadeIn">
+        <input formControlName="documentId" placeholder="Document ID" class="input-field" />
+        <input formControlName="documentType" placeholder="Document Type" class="input-field" />
+        <button type="button" (click)="removeDocument(i)" class="remove-btn">Remove</button>
+      </div>
+      <button type="button" (click)="addDocument()" class="add-btn">+ Add Document</button>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" [disabled]="loanForm.invalid || loading" class="submit-btn">
+      {{ loading ? 'Submitting...' : 'Submit Loan Application' }}
+    </button>
+  </form>
+
+  <!-- Success & Error Messages -->
+  <div *ngIf="successMessage" class="success-message animate-slideUp">
+    {{ successMessage }}
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message animate-slideUp">
+    {{ errorMessage }}
+  </div>
+</div>

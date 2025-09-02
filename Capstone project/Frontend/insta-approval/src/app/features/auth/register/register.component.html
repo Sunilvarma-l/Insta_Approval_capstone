@@ -1,0 +1,82 @@
+<div class="form-wrapper">
+  <div class="form-container">
+    <h2>🚀 Create Your Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Full Name -->
+      <div class="input-group">
+        <input formControlName="name" required />
+        <label>Full Name</label>
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error">
+          Full name is required.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <input formControlName="email" type="email" required />
+        <label>Email Address</label>
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="input-group">
+        <input formControlName="mobile" required />
+        <label>Mobile Number</label>
+        <div *ngIf="registerForm.get('mobile')?.invalid && registerForm.get('mobile')?.touched" class="error">
+          Mobile number is required.
+        </div>
+      </div>
+
+      <!-- Address -->
+      <div class="input-group">
+        <input formControlName="address" />
+        <label>Residential Address (Optional)</label>
+      </div>
+
+      <!-- DOB -->
+      <div class="input-group">
+        <input formControlName="dateOfBirth" type="date" required />
+        <label>Date of Birth</label>
+        <div *ngIf="registerForm.get('dateOfBirth')?.invalid && registerForm.get('dateOfBirth')?.touched" class="error">
+          Date of birth is required.
+        </div>
+      </div>
+
+      <!-- CIBIL Score -->
+      <div class="input-group">
+        <input formControlName="cibilScore" type="number" required />
+        <label>CIBIL Score (0 - 900)</label>
+        <div *ngIf="registerForm.get('cibilScore')?.invalid && registerForm.get('cibilScore')?.touched" class="error">
+          Please enter a valid CIBIL score between 0 and 900.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="input-group">
+        <input formControlName="password" type="password" required />
+        <label>Create Password</label>
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="input-group">
+        <input formControlName="confirmPassword" type="password" required />
+        <label>Confirm Password</label>
+        <div *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched" class="error">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="registerForm.invalid || loading">
+        {{ loading ? 'Creating Account...' : 'Sign Up' }}
+      </button>
+    </form>
+  </div>
+</div>

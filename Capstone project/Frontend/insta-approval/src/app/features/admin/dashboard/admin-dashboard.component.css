@@ -1,0 +1,144 @@
+/* Container */
+.admin-dashboard-container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Heading */
+.admin-dashboard-container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-bottom: 20px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  font-size: 18px;
+  color: #007bff;
+  animation: pulse 1.5s infinite;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.animated-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f9fbff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.animated-table th, .animated-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e0e6f1;
+  text-align: center;
+  font-size: 15px;
+}
+
+.animated-table th {
+  background: linear-gradient(45deg, #1e3c72, #2a5298);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.animated-table tr:hover {
+  background: #eef4ff;
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Status Badges */
+.status-pending {
+  color: #ff9800;
+  font-weight: 600;
+}
+.status-approved {
+  color: #4caf50;
+  font-weight: 600;
+}
+.status-rejected {
+  color: #f44336;
+  font-weight: 600;
+}
+
+/* Remarks Input */
+.remarks-input {
+  padding: 8px 12px;
+  border: 1px solid #ccd6f6;
+  border-radius: 8px;
+  outline: none;
+  width: 200px;
+  transition: 0.3s;
+}
+.remarks-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0,123,255,0.5);
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-approve {
+  background: #4caf50;
+  color: white;
+  margin-right: 6px;
+}
+.btn-approve:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.btn-reject {
+  background: #f44336;
+  color: white;
+}
+.btn-reject:hover {
+  background: #d32f2f;
+  transform: translateY(-2px);
+}
+
+/* No Data */
+.no-data {
+  font-size: 18px;
+  color: #555;
+  margin-top: 25px;
+  font-style: italic;
+}
+
+/* Error */
+.error-message {
+  color: #f44336;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
